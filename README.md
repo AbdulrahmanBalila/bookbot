@@ -1,2 +1,3 @@
-# bookbot
-Boot.div guided project 
+# BookBot
+# Boot.div guided project 
+BookBot is my first project!
