@@ -9,7 +9,10 @@ def main():
     # Links the text to the letter count function
     letter_count = number_of_letters(text)
 
-    print(f"{text}\nthere are {num_words} words in the text above.\nLetters matched in the text above {letter_count}")
+    # Takes the results from letter count in which it gets formatted
+    report = match_report(letter_count)
+    
+    print(f"--- Begin report of {book_path} ---\nThere are {num_words} words found in the document.\n\n\n{report}\n---End report---")
     
 
 # Gets the text out of the file 
@@ -35,16 +38,29 @@ def number_of_letters(text):
     return output     
 '''
 
-# Takes the text, sorts and lowers it before counting the matches
+# Takes the text, sorts and lowers it before counting the matches while skipping spaces and new lines
 def number_of_letters(text):
     chars = {}
     sort = sorted(text.lower())
     for i in sort:
+        if i == " ":
+            continue
+        if i == "\n":
+            continue
         if i in chars:
             chars[i] += 1
         else:
             chars[i] = 1
     return chars
+
+
+# Takes the sorted matched letters from the function above to format it
+def match_report(result):
+    n = ""
+    for i in result:
+        n += f"The letter {i} was found {result[i]} times\n"
+    return n   
+   
     
 
 
